@@ -1,0 +1,15 @@
+{
+  "name": "mint-tutor-bot",
+  "version": "1.0.0",
+  "description": "For Mint Tutor",
+  "main": "index.js",
+  "scripts": {
+    "test": "ping"
+  },
+  "author": "KanonKC",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1"
+  }
+}
