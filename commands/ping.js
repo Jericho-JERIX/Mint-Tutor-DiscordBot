@@ -4,5 +4,6 @@ module.exports = {
     roleRequirement: [],
     execute: function(message){
         message.channel.send("Hello")
+        return 0
     }
 }

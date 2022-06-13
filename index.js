@@ -1,8 +1,13 @@
 const {Client,Intents,MessageButton,MessageActionRow, Message} = require('discord.js')
+const {getAllCommands,getAllInteractions} = require('./utils/generate')
 const fs = require('fs')
+
 const dotenv = require('dotenv')
-const PREFIX = "-"
 dotenv.config()
+
+const PREFIX = "-"
+const Command = getAllCommands()
+const Interaction = getAllInteractions()
 
 const client = new Client({
     intents: [
@@ -13,26 +18,17 @@ const client = new Client({
     ]
 })
 
-// When bot start
 client.on('ready',async (test)=>{
     console.log("Going Live...")
-    console.log(Command)
 })
 client.login(process.env.TOKEN)
 
 //TODO--- User Command ---
-const CommandList = fs.readdirSync('./commands')
-var Command = {}
 
-for(var i in CommandList){
-    Command[CommandList[i].slice(0,-3)] = require(`./commands/${CommandList[i].slice(0,-3)}`)
-}
-
-var Prefix = "-"
 client.on('messageCreate',(message)=>{
     var arg = message.content.split(' ')
-    if(arg[0].slice(0,1) == Prefix){
-        var command = arg[0].slice(Prefix.length)
+    if(arg[0].slice(0,PREFIX.length) == PREFIX){
+        var command = arg[0].slice(PREFIX.length)
         var result = -1
         var executable = false
         for(var i in Command){
@@ -72,19 +68,13 @@ client.on('messageCreate',(message)=>{
     }
 })
 
-const InteractionList = fs.readdirSync('interactions')
-var Interaction = {}
-
-for(var i in InteractionList){
-    Interaction[InteractionList[i].slice(0,-3)] = require(`./interactions/${InteractionList[i].slice(0,-3)}`)
-}
 // Active Interaction(Button)
-client.on('interactionCreate',(interact)=>{
+client.on('interactionCreate',async (interact)=>{
     if(interact.isButton()){
         var arg = interact.customId.split('-')
         switch(arg[0]){
             case "classselector":
-                Interaction.counter.execute(interact,arg)
+                await Interaction.classselector.execute(interact,arg)
                 break
         }
     }

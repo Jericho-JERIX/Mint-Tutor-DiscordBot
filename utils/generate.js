@@ -1,0 +1,22 @@
+const fs = require('fs')
+
+module.exports = {
+    getAllCommands: function(){
+        const CommandList = fs.readdirSync('commands')
+        var Command = {}
+    
+        for(var i in CommandList){
+            Command[CommandList[i].slice(0,-3)] = require(`../commands/${CommandList[i].slice(0,-3)}`)
+        }
+        return Command
+    },
+    getAllInteractions: function(){
+        const InteractionList = fs.readdirSync('interactions')
+        var Interaction = {}
+    
+        for(var i in InteractionList){
+            Interaction[InteractionList[i].slice(0,-3)] = require(`../interactions/${InteractionList[i].slice(0,-3)}`)
+        }
+        return Interaction
+    }
+}
