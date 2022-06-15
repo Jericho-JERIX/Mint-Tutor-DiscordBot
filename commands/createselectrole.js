@@ -1,4 +1,4 @@
-const {Client,Intents,MessageButton,MessageActionRow, Message} = require('discord.js')
+const {MessageButton,MessageActionRow} = require('discord.js')
 
 const ClassSelector = [
     new MessageActionRow().addComponents(
@@ -19,8 +19,9 @@ const ClassSelector = [
 module.exports = {
     name: "createclassselector",
     alias : ['createclassselector','ccs'],
-    roleRequirement: ["985887344504746006"],
-    execute: function(message){
+    roleRequirement: ["985887344504746006","586508284660285450"],
+    channelRequirement: ["897797648130654258"],
+    execute: function(message,arg){
         message.channel.send("เลือกระดับชั้น")
         message.channel.send({components: [ClassSelector[0]]})
         message.channel.send({components: [ClassSelector[1]]})

@@ -2,7 +2,8 @@ module.exports = {
     name: "ping",
     alias : ["ping","p"],
     roleRequirement: [],
-    execute: function(message){
+    channelRequirement: [],
+    execute: function(message,arg){
         message.channel.send("Hello")
         return 0
     }
