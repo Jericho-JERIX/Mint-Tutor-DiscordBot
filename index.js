@@ -64,10 +64,6 @@ client.on('messageCreate',(message)=>{
 client.on('interactionCreate',async (interact)=>{
     if(interact.isButton()){
         var arg = interact.customId.split('-')
-        switch(arg[0]){
-            case "classselector":
-                await Interaction.classselector.execute(interact,arg)
-                break
-        }
+        Interaction[arg[0]].execute(interact,arg)
     }
 })

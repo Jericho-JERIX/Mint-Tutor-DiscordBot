@@ -1,5 +1,4 @@
 const {Client,Intents,MessageButton,MessageActionRow, Message} = require('discord.js')
-
 const ClassRole = {
     "p"  : '985887062496530522',
     "m1" : '985887048810524702',
