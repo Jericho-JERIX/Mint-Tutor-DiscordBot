@@ -32,6 +32,11 @@ client.on('messageCreate',(message)=>{
         let result = -1
         for(var i in Command){
             if(Command[i].name == command || Command[i].alias.includes(command)){
+                
+                if(Command[i].clearCommand){
+                    message.channel.bulkDelete(parseInt(1))
+                }
+
                 if(Command[i].roleRequirement != 0 && Command[i].roleRequirement.filter((value) => message.member._roles.includes(value)).length == 0){
                     result = 2
                 }
