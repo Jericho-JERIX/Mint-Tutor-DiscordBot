@@ -20,8 +20,8 @@ module.exports = {
     name: "classselector",
     alias: ['classselector'],
     execute: async function(interact,arg){
-        interact.deferUpdate()
         await removeAllClass(interact)
         await interact.member.roles.add(interact.guild.roles.cache.get(ClassRole[arg[1]]))
+        interact.deferUpdate()
     }
 }
