@@ -3,6 +3,7 @@ const {getAllCommands,getAllInteractions} = require('./utils/generate')
 const fs = require('fs')
 
 const dotenv = require('dotenv')
+const LoginEvent = require('./modules/LoginEvent')
 dotenv.config()
 
 const PREFIX = "-"
@@ -20,6 +21,7 @@ const client = new Client({
 
 client.on('ready',async (test)=>{
     console.log("Going Live...")
+    // LoginEvent.setPresence(client)
 })
 client.login(process.env.TOKEN)
 

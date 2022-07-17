@@ -3,7 +3,7 @@ const { showProblem } = require("../modules/ProgrammingProblem")
 
 module.exports = {
     name: "postproblems",
-    alias : ["postproblems"],
+    alias : ["postproblems","ppb"],
     clearCommand: true,
     roleRequirement: ["985887344504746006","586508284660285450"],
     channelRequirement: [],

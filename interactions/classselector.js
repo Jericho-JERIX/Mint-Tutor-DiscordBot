@@ -1,4 +1,5 @@
 const {Client,Intents,MessageButton,MessageActionRow, Message} = require('discord.js')
+
 const ClassRole = {
     "p"  : '985887062496530522',
     "m1" : '985887048810524702',
@@ -19,6 +20,7 @@ module.exports = {
     name: "classselector",
     alias: ['classselector'],
     execute: async function(interact,arg){
+        interact.deferUpdate()
         await removeAllClass(interact)
         await interact.member.roles.add(interact.guild.roles.cache.get(ClassRole[arg[1]]))
     }
