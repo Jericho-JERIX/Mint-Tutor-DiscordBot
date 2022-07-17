@@ -38,7 +38,7 @@ module.exports = {
     alias : ['createclassselector','ccs'],
     clearCommand: true,
     roleRequirement: ["985887344504746006","586508284660285450"],
-    channelRequirement: ["897797648130654258"],
+    channelRequirement: ["897797648130654258","985938990068813894"],
     execute: function(message,arg){
         message.channel.send({
             content: `${Annoucement}==============================================================================\n✅ **เลือกระดับชั้นของตัวเอง**`,
