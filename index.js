@@ -16,6 +16,7 @@ const client = new Client({
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_MESSAGE_TYPING,
         Intents.FLAGS.GUILD_VOICE_STATES,
+        Intents.FLAGS.GUILD_MEMBERS
     ]
 })
 
@@ -71,6 +72,6 @@ client.on('messageCreate',(message)=>{
 client.on('interactionCreate',async (interact)=>{
     if(interact.isButton()){
         var arg = interact.customId.split('-')
-        Interaction[arg[0]].execute(interact,arg)
+        await Interaction[arg[0]].execute(interact,arg)
     }
 })
