@@ -87,9 +87,7 @@ client.on("messageCreate", (message) => {
 // Active Interaction(Button)
 client.on("interactionCreate", async (interact) => {
 	if (interact.isButton()) {
-		console.log("Event");
 		var arg = interact.customId.split("-");
-		console.log("Event");
 		await Interaction[arg[0]].execute(interact, arg);
 	}
 });
