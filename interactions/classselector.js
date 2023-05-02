@@ -5,7 +5,7 @@ const {
 	MessageActionRow,
 	Message,
 } = require("discord.js");
-const { ClassRole } = require("../constants/roles.constant");
+const { ClassRole, AllClassRole } = require("../constants/roles.constant");
 
 async function removeAllClass(interact) {
 	for (var i in ClassRole) {
@@ -20,9 +20,20 @@ module.exports = {
 	alias: ["classselector"],
 	execute: async function (interact, arg) {
 		interact.deferUpdate();
-		await removeAllClass(interact);
+		const roleIds = interact.member.roles.cache.map(
+			(collection) => collection.id
+		);
+		if (arg[1] === "programming") {
+			if (roleIds.includes(AllClassRole.programming)) {
+				return await interact.member.roles.remove(
+					AllClassRole.programming
+				);
+			}
+		} else {
+			await removeAllClass(interact);
+		}
 		await interact.member.roles.add(
-			interact.guild.roles.cache.get(ClassRole[arg[1]])
+			interact.guild.roles.cache.get(AllClassRole[arg[1]])
 		);
 	},
 };
